@@ -937,11 +937,6 @@ footer {
     </div>
 
     <div class="form-field">
-      <label>IG Handle <span class="req">*</span></label>
-      <input type="text" id="userIG" placeholder="@yourhandle">
-    </div>
-
-    <div class="form-field">
       <label>Your Email <span class="req">*</span></label>
       <input type="email" id="userEmail" placeholder="you@example.com" autocomplete="email">
     </div>
@@ -1020,14 +1015,12 @@ footer {
 // ─── INFO GATE (after quiz, before results) ───
 document.getElementById('unlockBtn').addEventListener('click', function() {
   const name = document.getElementById('userName');
-  const ig = document.getElementById('userIG');
   const email = document.getElementById('userEmail');
   let valid = true;
 
-  [name, ig, email].forEach(f => f.classList.remove('field-error'));
+  [name, email].forEach(f => f.classList.remove('field-error'));
 
   if (!name.value.trim()) { name.classList.add('field-error'); valid = false; }
-  if (!ig.value.trim()) { ig.classList.add('field-error'); valid = false; }
   if (!email.value.trim() || !email.value.includes('@')) { email.classList.add('field-error'); valid = false; }
 
   if (!valid) {
@@ -1036,7 +1029,7 @@ document.getElementById('unlockBtn').addEventListener('click', function() {
   }
 
   document.getElementById('infoError').style.display = 'none';
-  window.quizUser = { name: name.value.trim(), ig: ig.value.trim(), email: email.value.trim() };
+  window.quizUser = { name: name.value.trim(), email: email.value.trim() };
 
   // Hide info gate, show results
   document.getElementById('infoGate').style.display = 'none';
