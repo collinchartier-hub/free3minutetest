@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free 3-Minute Test — How Ready Is Your Nervous System For Pressure?</title>
+<meta name="description" content="Rate your nervous system readiness across Physical, Psychological, and Biochemical Mastery. Get your personalized results instantly.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0a0a0a;
+  --black-light: #111111;
+  --black-card: #161616;
+  --blue: #2563eb;
+  --blue-bright: #3b82f6;
+  --blue-dim: #1e40af;
+  --blue-glow: rgba(37, 99, 235, 0.15);
+  --white: #f0ece4;
+  --white-dim: #a09a8e;
+  --red: #ef4444;
+  --green: #22c55e;
+  --amber: #f59e0b;
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--blue-dim); border-radius: 3px; }
+
+/* ─── HERO ─── */
+.quiz-hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+  position: relative;
+}
+
+.quiz-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(37, 99, 235, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.quiz-hero .badge {
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.1s forwards;
+}
+
+.quiz-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 8vw, 72px);
+  line-height: 0.95;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.2s forwards;
+}
+
+.quiz-hero h1 span { color: var(--blue); }
+
+.quiz-hero .subtitle {
+  font-size: 15px;
+  color: var(--white-dim);
+  letter-spacing: 1px;
+  max-width: 500px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.3s forwards;
+}
+
+.scale-legend {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 20px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeUp 0.6s 0.4s forwards;
+}
+
+.scale-legend span:first-child { color: var(--red); }
+.scale-legend span:last-child { color: var(--green); }
+
+/* ─── PROGRESS BAR ─── */
+.progress-bar-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+  padding: 12px 20px;
+}
+
+.progress-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.progress-text {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: var(--blue);
+  min-width: 48px;
+  text-align: right;
+}
+
+/* ─── QUIZ FORM ─── */
+.quiz-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.section-header {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 5vw, 42px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 60px 0 8px;
+  line-height: 1.1;
+}
+
+.section-header span { color: var(--blue); }
+
+.section-num {
+  font-family: var(--font-display);
+  font-size: 60px;
+  color: rgba(37, 99, 235, 0.07);
+  line-height: 1;
+  margin-bottom: -14px;
+  letter-spacing: 4px;
+}
+
+.section-desc {
+  font-size: 14px;
+  color: var(--white-dim);
+  margin-bottom: 32px;
+  letter-spacing: 0.5px;
+}
+
+/* Question Card */
+.question-card {
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 28px 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.question-card.answered {
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.question-card.error {
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+.question-text {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.question-text strong {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* Radio Group */
+.radio-group {
+  display: flex;
+  gap: 8px;
+}
+
+.radio-option {
+  flex: 1;
+  position: relative;
+}
+
+.radio-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.radio-option label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 4px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-align: center;
+  min-height: 56px;
+}
+
+.radio-option label .num {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: var(--white);
+  transition: color 0.25s ease;
+}
+
+.radio-option label:hover {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+.radio-option input:checked + label {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: var(--blue);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.15);
+}
+
+.radio-option input:checked + label .num {
+  color: var(--blue-bright);
+}
+
+.radio-anchors {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--white-dim);
+}
+
+/* Submit */
+.submit-section {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.submit-btn {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  padding: 20px 56px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.submit-btn:hover::before { transform: translateX(100%); }
+.submit-btn:hover {
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.35);
+  transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.error-msg {
+  color: var(--red);
+  font-size: 14px;
+  margin-top: 16px;
+  display: none;
+}
+
+/* ─── RESULTS ─── */
+.results-section {
+  display: none;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.results-section.visible {
+  display: block;
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.results-hero {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.results-hero h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 7vw, 60px);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.results-hero h2 span { color: var(--blue); }
+
+.results-hero .score-big {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 15vw, 120px);
+  color: var(--blue);
+  line-height: 1;
+  letter-spacing: 4px;
+}
+
+.results-hero .score-label {
+  font-size: 14px;
+  color: var(--white-dim);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.results-hero .readiness-tag {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 24px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: 1px solid;
+}
+
+.readiness-low { color: var(--red); border-color: var(--red); }
+.readiness-mid { color: var(--amber); border-color: var(--amber); }
+.readiness-high { color: var(--green); border-color: var(--green); }
+
+/* Overall bar */
+.overall-bar {
+  margin: 32px 0 48px;
+  background: rgba(255,255,255,0.05);
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.overall-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 0%;
+}
+
+.bar-low { background: linear-gradient(90deg, var(--red), #f97316); }
+.bar-mid { background: linear-gradient(90deg, #f97316, var(--amber)); }
+.bar-high { background: linear-gradient(90deg, var(--amber), var(--green)); }
+
+/* Category Cards */
+.category-card {
+  background: var(--black-card);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 32px 28px;
+  margin-bottom: 20px;
+}
+
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.category-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.category-score {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.category-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.category-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+  width: 0%;
+}
+
+.category-analysis {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--white);
+}
+
+.category-level {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  margin-bottom: 12px;
+}
+
+.level-low { background: rgba(239, 68, 68, 0.15); color: var(--red); }
+.level-mid { background: rgba(245, 158, 11, 0.15); color: var(--amber); }
+.level-high { background: rgba(34, 197, 94, 0.15); color: var(--green); }
+
+/* Overall analysis */
+.overall-analysis {
+  background: var(--black-light);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  padding: 36px 28px;
+  margin: 40px 0;
+}
+
+.overall-analysis h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.overall-analysis h3 span { color: var(--blue); }
+
+.overall-analysis p {
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* CTA Buttons */
+.results-cta {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.results-cta .cta-primary {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 18px 44px;
+  margin: 8px;
+  cursor: pointer;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.results-cta .cta-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.results-cta .cta-primary:hover::before { transform: translateX(100%); }
+.results-cta .cta-primary:hover {
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.35);
+  transform: translateY(-2px);
+}
+
+.results-cta .cta-secondary {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 18px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 16px 40px;
+  margin: 8px;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.results-cta .cta-secondary:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.15);
+}
+
+.results-cta .urgency {
+  display: block;
+  margin-top: 20px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid rgba(37, 99, 235, 0.08);
+  font-size: 13px;
+  color: var(--white-dim);
+  letter-spacing: 1px;
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  .quiz-hero { padding: 40px 16px 24px; }
+  .radio-option label { padding: 12px 2px; min-height: 50px; }
+  .radio-option label .num { font-size: 20px; }
+  .question-card { padding: 24px 18px; }
+  .category-card { padding: 24px 20px; }
+  .overall-analysis { padding: 28px 20px; }
+  .results-cta .cta-primary { font-size: 17px; padding: 16px 32px; }
+  .results-cta .cta-secondary { font-size: 15px; padding: 14px 28px; }
+}
+
+@media (max-width: 420px) {
+  .radio-option label .num { font-size: 18px; }
+  .radio-group { gap: 4px; }
+  .quiz-hero h1 { font-size: 32px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="quiz-hero">
+  <p class="badge">Collin Chartier Coaching</p>
+  <h1>How Ready Is Your<br>Nervous System<br><span>For Pressure?</span></h1>
+  <p class="subtitle">12 questions. 3 minutes. Discover where your nervous system breaks down under pressure.</p>
+  <div class="scale-legend">
+    <span>1 = Reactive</span>
+    <span>5 = Rewired</span>
+  </div>
+</section>
+
+<!-- ─── PROGRESS BAR ─── -->
+<div class="progress-bar-container" id="progressBar">
+  <div class="progress-inner">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text" id="progressText">0/12</div>
+  </div>
+</div>
+
+<!-- ─── QUIZ ─── -->
+<form class="quiz-form" id="quizForm">
+
+  <!-- PHYSICAL MASTERY -->
+  <div class="section-num">01</div>
+  <h2 class="section-header"><span>Physical</span> Mastery</h2>
+  <p class="section-desc">How your body performs under stress and pressure</p>
+
+  <div class="question-card" data-category="physical">
+    <p class="question-text"><strong>Q1.</strong> How well do you train your nervous system for precision, not just your muscles, through drills that sharpen coordination, balance, and reaction time?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q1" value="1" id="q1_1"><label for="q1_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q1" value="2" id="q1_2"><label for="q1_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q1" value="3" id="q1_3"><label for="q1_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q1" value="4" id="q1_4"><label for="q1_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q1" value="5" id="q1_5"><label for="q1_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="physical">
+    <p class="question-text"><strong>Q2.</strong> When stress or fatigue hits, how well can your body stay relaxed, stable, and explosive at the same time?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q2" value="1" id="q2_1"><label for="q2_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q2" value="2" id="q2_2"><label for="q2_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q2" value="3" id="q2_3"><label for="q2_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q2" value="4" id="q2_4"><label for="q2_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q2" value="5" id="q2_5"><label for="q2_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="physical">
+    <p class="question-text"><strong>Q3.</strong> How consistently do you use recovery methods that activate your calm system like Breathwork and HRV tracking instead of just resting?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q3" value="1" id="q3_1"><label for="q3_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q3" value="2" id="q3_2"><label for="q3_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q3" value="3" id="q3_3"><label for="q3_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q3" value="4" id="q3_4"><label for="q3_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q3" value="5" id="q3_5"><label for="q3_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="physical">
+    <p class="question-text"><strong>Q4.</strong> How connected do you feel between your feet, fascia, and core, moving as one strong and efficient unit?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q4" value="1" id="q4_1"><label for="q4_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q4" value="2" id="q4_2"><label for="q4_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q4" value="3" id="q4_3"><label for="q4_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q4" value="4" id="q4_4"><label for="q4_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q4" value="5" id="q4_5"><label for="q4_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <!-- PSYCHOLOGICAL MASTERY -->
+  <div class="section-num">02</div>
+  <h2 class="section-header"><span>Psychological</span> Mastery</h2>
+  <p class="section-desc">How your mind handles pressure, adversity, and identity</p>
+
+  <div class="question-card" data-category="psychological">
+    <p class="question-text"><strong>Q5.</strong> How consistently can you regulate emotions like anger, fear, or self doubt when things get hard?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q5" value="1" id="q5_1"><label for="q5_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q5" value="2" id="q5_2"><label for="q5_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q5" value="3" id="q5_3"><label for="q5_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q5" value="4" id="q5_4"><label for="q5_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q5" value="5" id="q5_5"><label for="q5_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="psychological">
+    <p class="question-text"><strong>Q6.</strong> How often do you use a mental "Go Phrase" or trigger that quickly locks you into focus and confidence?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q6" value="1" id="q6_1"><label for="q6_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q6" value="2" id="q6_2"><label for="q6_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q6" value="3" id="q6_3"><label for="q6_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q6" value="4" id="q6_4"><label for="q6_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q6" value="5" id="q6_5"><label for="q6_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="psychological">
+    <p class="question-text"><strong>Q7.</strong> When you make a mistake or face adversity, how quickly can you reset and return to execution mode?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q7" value="1" id="q7_1"><label for="q7_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q7" value="2" id="q7_2"><label for="q7_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q7" value="3" id="q7_3"><label for="q7_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q7" value="4" id="q7_4"><label for="q7_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q7" value="5" id="q7_5"><label for="q7_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="psychological">
+    <p class="question-text"><strong>Q8.</strong> How strong is your identity as a performer — someone who stays calm and dominant under pressure?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q8" value="1" id="q8_1"><label for="q8_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q8" value="2" id="q8_2"><label for="q8_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q8" value="3" id="q8_3"><label for="q8_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q8" value="4" id="q8_4"><label for="q8_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q8" value="5" id="q8_5"><label for="q8_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <!-- BIOCHEMICAL MASTERY -->
+  <div class="section-num">03</div>
+  <h2 class="section-header"><span>Biochemical</span> Mastery</h2>
+  <p class="section-desc">How your chemistry supports focus, energy, and recovery</p>
+
+  <div class="question-card" data-category="biochemical">
+    <p class="question-text"><strong>Q9.</strong> How often do you celebrate small wins throughout the day to keep your dopamine steady and motivation high?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q9" value="1" id="q9_1"><label for="q9_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q9" value="2" id="q9_2"><label for="q9_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q9" value="3" id="q9_3"><label for="q9_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q9" value="4" id="q9_4"><label for="q9_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q9" value="5" id="q9_5"><label for="q9_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="biochemical">
+    <p class="question-text"><strong>Q10.</strong> How well do you use the biology of winning — stacking micro victories to raise your testosterone and confidence naturally?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q10" value="1" id="q10_1"><label for="q10_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q10" value="2" id="q10_2"><label for="q10_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q10" value="3" id="q10_3"><label for="q10_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q10" value="4" id="q10_4"><label for="q10_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q10" value="5" id="q10_5"><label for="q10_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="biochemical">
+    <p class="question-text"><strong>Q11.</strong> How well do you manage your daily energy inputs — glucose, hydration, caffeine, and sleep — to stay clear and focused?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q11" value="1" id="q11_1"><label for="q11_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q11" value="2" id="q11_2"><label for="q11_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q11" value="3" id="q11_3"><label for="q11_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q11" value="4" id="q11_4"><label for="q11_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q11" value="5" id="q11_5"><label for="q11_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="question-card" data-category="biochemical">
+    <p class="question-text"><strong>Q12.</strong> How consistent are you with nighttime recovery rituals that reset your chemistry — like breathwork, magnesium, or light exposure control?</p>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="q12" value="1" id="q12_1"><label for="q12_1"><span class="num">1</span></label></div>
+      <div class="radio-option"><input type="radio" name="q12" value="2" id="q12_2"><label for="q12_2"><span class="num">2</span></label></div>
+      <div class="radio-option"><input type="radio" name="q12" value="3" id="q12_3"><label for="q12_3"><span class="num">3</span></label></div>
+      <div class="radio-option"><input type="radio" name="q12" value="4" id="q12_4"><label for="q12_4"><span class="num">4</span></label></div>
+      <div class="radio-option"><input type="radio" name="q12" value="5" id="q12_5"><label for="q12_5"><span class="num">5</span></label></div>
+    </div>
+    <div class="radio-anchors"><span>Reactive</span><span>Rewired</span></div>
+  </div>
+
+  <div class="submit-section">
+    <button type="submit" class="submit-btn" id="submitBtn">Get My Results</button>
+    <p class="error-msg" id="errorMsg">Please answer all 12 questions before viewing your results.</p>
+  </div>
+</form>
+
+<!-- ─── RESULTS ─── -->
+<section class="results-section" id="resultsSection">
+  <div class="results-hero">
+    <h2>Your Nervous System<br><span>Readiness Score</span></h2>
+    <div class="score-big" id="totalScore">0</div>
+    <p class="score-label">out of 60</p>
+    <div class="readiness-tag" id="readinessTag"></div>
+  </div>
+
+  <div class="overall-bar">
+    <div class="overall-bar-fill" id="overallBarFill"></div>
+  </div>
+
+  <!-- Physical -->
+  <div class="category-card" id="physicalCard">
+    <div class="category-header">
+      <span class="category-name">Physical Mastery</span>
+      <span class="category-score" id="physicalScore">0/20</span>
+    </div>
+    <div class="category-bar"><div class="category-bar-fill" id="physicalBar"></div></div>
+    <span class="category-level" id="physicalLevel"></span>
+    <p class="category-analysis" id="physicalAnalysis"></p>
+  </div>
+
+  <!-- Psychological -->
+  <div class="category-card" id="psychologicalCard">
+    <div class="category-header">
+      <span class="category-name">Psychological Mastery</span>
+      <span class="category-score" id="psychologicalScore">0/20</span>
+    </div>
+    <div class="category-bar"><div class="category-bar-fill" id="psychologicalBar"></div></div>
+    <span class="category-level" id="psychologicalLevel"></span>
+    <p class="category-analysis" id="psychologicalAnalysis"></p>
+  </div>
+
+  <!-- Biochemical -->
+  <div class="category-card" id="biochemicalCard">
+    <div class="category-header">
+      <span class="category-name">Biochemical Mastery</span>
+      <span class="category-score" id="biochemicalScore">0/20</span>
+    </div>
+    <div class="category-bar"><div class="category-bar-fill" id="biochemicalBar"></div></div>
+    <span class="category-level" id="biochemicalLevel"></span>
+    <p class="category-analysis" id="biochemicalAnalysis"></p>
+  </div>
+
+  <!-- Overall Analysis -->
+  <div class="overall-analysis">
+    <h3>Your <span>Overall Assessment</span></h3>
+    <p id="overallAnalysis"></p>
+  </div>
+
+  <!-- CTA Buttons -->
+  <div class="results-cta">
+    <a href="index.html" class="cta-secondary">See The System That Rewires You</a>
+    <button onclick="openCalendly(event)" class="cta-primary">Book Your Free 18 Min. Strategy Call</button>
+    <span class="urgency">Limited availability — spots fill fast</span>
+  </div>
+</section>
+
+<footer>
+  &copy; 2026 Collin Chartier Coaching. All rights reserved.
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+function openCalendly(e) {
+  e.preventDefault();
+  Calendly.initPopupWidget({
+    url: 'https://calendly.com/collinchartier/new-meeting',
+    color: '#2563eb',
+    textColor: '#f0ece4',
+    branding: false
+  });
+}
+
+// ─── ANALYSIS DATA ───
+const analysis = {
+  physical: {
+    low: "Your nervous system is running on survival mode. Under stress, your body tightens, coordination drops, and your physical edge disappears. You're leaving massive athletic potential on the table because your body hasn't been trained to stay explosive under pressure.",
+    mid: "You have physical tools, but they short-circuit when it matters. In practice you're sharp \u2014 in the clutch, tension creeps in and your body betrays your talent. The gap between your training performance and game-day performance is costing you.",
+    high: "Your physical foundation is strong. You've built coordination and recovery habits that most overlook. The next level is wiring these patterns so deep they become automatic under maximum pressure \u2014 zero hesitation, pure instinct."
+  },
+  psychological: {
+    low: "Your mind is your biggest bottleneck. Doubt, overthinking, and emotional reactivity are hijacking your performance at the worst moments. Every time you choke, you're reinforcing an identity of hesitation that gets harder to break.",
+    mid: "You have moments of mental clarity, but they're inconsistent. Under real pressure \u2014 the deal, the big game, the spotlight \u2014 your psychology fragments. You know what to do but can't access it when the stakes are highest.",
+    high: "Your mental game is advanced. You can regulate, reset, and execute under pressure better than most. The final edge is identity-level conditioning \u2014 making dominance your default state, not something you have to summon."
+  },
+  biochemical: {
+    low: "Your biochemistry is working against you. Depleted dopamine, unchecked cortisol, and poor recovery are silently sabotaging your performance, focus, and confidence. You're grinding harder while your chemistry pulls you backward.",
+    mid: "You're aware of recovery and energy management but haven't systematized it. Some days you're locked in, others you're foggy and flat. This inconsistency is biochemical \u2014 and it's fixable with the right protocols.",
+    high: "You're managing your biochemistry better than 90% of performers. Your energy, sleep, and recovery habits give you a real edge. The next step is precision-tuning these inputs to unlock peak neurochemical states on demand."
+  },
+  overall: {
+    low: "Your nervous system is deeply reactive. Under pressure, every system \u2014 physical, mental, biochemical \u2014 compounds against you. The good news: this means the potential upside from rewiring is massive. You're not broken, you're just untrained where it matters most.",
+    mid: "You have real ability, but a widening gap between your potential and your performance. Your nervous system has the raw material \u2014 it just hasn't been wired for dominance under pressure. This is exactly where targeted protocols create the biggest transformation.",
+    high: "You're already operating at a high level. But you know there's another gear \u2014 and you're right. The difference between top 10% and top 1% is precision nervous system conditioning. You're closer than you think to unlocking your full capacity."
+  }
+};
+
+function getLevel(score, max) {
+  const pct = score / max;
+  if (pct <= 0.45) return 'low';
+  if (pct <= 0.7) return 'mid';
+  return 'high';
+}
+
+function getLevelLabel(level) {
+  if (level === 'low') return 'Needs Rewiring';
+  if (level === 'mid') return 'Foundation Present';
+  return 'Strong Base';
+}
+
+// ─── PROGRESS TRACKING ───
+const radios = document.querySelectorAll('input[type="radio"]');
+const totalQ = 12;
+
+function updateProgress() {
+  let answered = 0;
+  for (let i = 1; i <= totalQ; i++) {
+    if (document.querySelector(`input[name="q${i}"]:checked`)) {
+      answered++;
+      document.querySelector(`input[name="q${i}"]`).closest('.question-card').classList.add('answered');
+    }
+  }
+  const pct = (answered / totalQ) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = answered + '/' + totalQ;
+}
+
+radios.forEach(r => r.addEventListener('change', updateProgress));
+
+// ─── FORM SUBMIT ───
+document.getElementById('quizForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Validate all answered
+  let allAnswered = true;
+  for (let i = 1; i <= totalQ; i++) {
+    const card = document.querySelectorAll('.question-card')[i - 1];
+    if (!document.querySelector(`input[name="q${i}"]:checked`)) {
+      allAnswered = false;
+      card.classList.add('error');
+    } else {
+      card.classList.remove('error');
+    }
+  }
+
+  if (!allAnswered) {
+    document.getElementById('errorMsg').style.display = 'block';
+    // Scroll to first unanswered
+    const firstError = document.querySelector('.question-card.error');
+    if (firstError) firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  document.getElementById('errorMsg').style.display = 'none';
+
+  // Calculate scores
+  let physical = 0, psychological = 0, biochemical = 0;
+  for (let i = 1; i <= 4; i++) physical += parseInt(document.querySelector(`input[name="q${i}"]:checked`).value);
+  for (let i = 5; i <= 8; i++) psychological += parseInt(document.querySelector(`input[name="q${i}"]:checked`).value);
+  for (let i = 9; i <= 12; i++) biochemical += parseInt(document.querySelector(`input[name="q${i}"]:checked`).value);
+  const total = physical + psychological + biochemical;
+
+  // Hide form, show results
+  document.getElementById('quizForm').style.display = 'none';
+  document.getElementById('progressBar').style.display = 'none';
+  const results = document.getElementById('resultsSection');
+  results.classList.add('visible');
+
+  // Scroll to top
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Populate scores
+  document.getElementById('totalScore').textContent = total;
+
+  // Overall readiness tag
+  const overallLevel = getLevel(total, 60);
+  const tag = document.getElementById('readinessTag');
+  tag.textContent = overallLevel === 'low' ? 'Reactive' : overallLevel === 'mid' ? 'Under-Wired' : 'Near-Optimized';
+  tag.className = 'readiness-tag readiness-' + overallLevel;
+
+  // Overall bar
+  setTimeout(() => {
+    document.getElementById('overallBarFill').style.width = ((total / 60) * 100) + '%';
+    document.getElementById('overallBarFill').className = 'overall-bar-fill bar-' + overallLevel;
+  }, 200);
+
+  // Category breakdowns
+  const cats = [
+    { key: 'physical', score: physical },
+    { key: 'psychological', score: psychological },
+    { key: 'biochemical', score: biochemical }
+  ];
+
+  cats.forEach((cat, idx) => {
+    const level = getLevel(cat.score, 20);
+    document.getElementById(cat.key + 'Score').textContent = cat.score + '/20';
+
+    const bar = document.getElementById(cat.key + 'Bar');
+    setTimeout(() => {
+      bar.style.width = ((cat.score / 20) * 100) + '%';
+      bar.className = 'category-bar-fill bar-' + level;
+    }, 400 + idx * 200);
+
+    const levelEl = document.getElementById(cat.key + 'Level');
+    levelEl.textContent = getLevelLabel(level);
+    levelEl.className = 'category-level level-' + level;
+
+    document.getElementById(cat.key + 'Analysis').textContent = analysis[cat.key][level];
+  });
+
+  // Overall analysis
+  document.getElementById('overallAnalysis').textContent = analysis.overall[overallLevel];
+});
+</script>
+</body>
+</html>
