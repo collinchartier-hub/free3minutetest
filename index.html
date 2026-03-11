@@ -675,7 +675,7 @@ footer {
 <!-- ─── STICKY CTA BAR ─── -->
 <div class="sticky-cta" id="stickyCta">
   <div class="brand">Collin Chartier</div>
-  <a href="https://calendly.com/collinchartier/new-meeting" target="_blank" class="cta-btn-sm">Book Free Strategy Call</a>
+  <a href="#" onclick="openCalendly(event)" class="cta-btn-sm">Book Free Strategy Call</a>
 </div>
 
 <!-- ─── HERO ─── -->
@@ -693,7 +693,7 @@ footer {
     <span class="video-label">Watch the breakdown</span>
   </div>
 
-  <a href="https://calendly.com/collinchartier/new-meeting" target="_blank" class="cta-primary">
+  <a href="#" onclick="openCalendly(event)" class="cta-primary">
     Unlock Your Free 18 Min. Strategy Call
   </a>
   <p class="cta-pulse">Limited spots available each week</p>
@@ -847,7 +847,7 @@ footer {
 <section class="final-cta">
   <h2 class="reveal">Stop Wiring<br><span style="color: var(--gold);">Hesitation</span></h2>
   <p class="reveal">The system the world's best already use is one call away. 18 minutes that could change everything.</p>
-  <a href="https://calendly.com/collinchartier/new-meeting" target="_blank" class="cta-primary reveal">
+  <a href="#" onclick="openCalendly(event)" class="cta-primary reveal">
     Unlock Your Free 18 Min. Strategy Call
   </a>
   <br>
@@ -859,7 +859,19 @@ footer {
   &copy; 2026 Collin Chartier Coaching. All rights reserved.
 </footer>
 
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
+function openCalendly(e) {
+  e.preventDefault();
+  Calendly.initPopupWidget({
+    url: 'https://calendly.com/collinchartier/new-meeting',
+    color: '#2563eb',
+    textColor: '#f0ece4',
+    branding: false
+  });
+}
+
 // ─── STICKY CTA ───
 const stickyCta = document.getElementById('stickyCta');
 const hero = document.getElementById('hero');
