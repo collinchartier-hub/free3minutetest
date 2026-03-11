@@ -343,6 +343,118 @@ body::before {
   display: none;
 }
 
+/* ─── INTRO FORM ─── */
+.intro-section {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+}
+
+.intro-card {
+  background: var(--black-card);
+  border: 1px solid rgba(37, 99, 235, 0.12);
+  padding: 40px 32px;
+}
+
+.intro-card h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.intro-card h2 span { color: var(--blue); }
+
+.intro-card .intro-sub {
+  font-size: 14px;
+  color: var(--white-dim);
+  margin-bottom: 32px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+}
+
+.form-field label {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.form-field label .req {
+  color: var(--blue);
+}
+
+.form-field input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-field input::placeholder {
+  color: var(--white-dim);
+  opacity: 0.6;
+}
+
+.form-field input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.1);
+}
+
+.form-field input.field-error {
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.1);
+}
+
+.intro-btn {
+  width: 100%;
+  margin-top: 8px;
+  background: var(--blue);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.intro-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.intro-btn:hover::before { transform: translateX(100%); }
+.intro-btn:hover {
+  box-shadow: 0 0 50px rgba(37, 99, 235, 0.35);
+}
+
+.intro-error {
+  color: var(--red);
+  font-size: 14px;
+  margin-top: 12px;
+  display: none;
+}
+
 /* ─── RESULTS ─── */
 .results-section {
   display: none;
@@ -625,14 +737,40 @@ footer {
   <p class="badge">Collin Chartier Coaching</p>
   <h1>How Ready Is Your<br>Nervous System<br><span>For Pressure?</span></h1>
   <p class="subtitle">12 questions. 3 minutes. Discover where your nervous system breaks down under pressure.</p>
-  <div class="scale-legend">
+  <div class="scale-legend" id="scaleLegend" style="display:none;">
     <span>1 = Reactive</span>
     <span>5 = Rewired</span>
   </div>
 </section>
 
+<!-- ─── INTRO FORM ─── -->
+<section class="intro-section" id="introSection">
+  <div class="intro-card">
+    <h2>Before We Start, <span>Tell Us About You</span></h2>
+    <p class="intro-sub">All fields required. Your info stays private.</p>
+
+    <div class="form-field">
+      <label>Your Name <span class="req">*</span></label>
+      <input type="text" id="userName" placeholder="e.g. Collin Chartier" autocomplete="name">
+    </div>
+
+    <div class="form-field">
+      <label>IG Handle <span class="req">*</span></label>
+      <input type="text" id="userIG" placeholder="@yourhandle">
+    </div>
+
+    <div class="form-field">
+      <label>Your Email <span class="req">*</span></label>
+      <input type="email" id="userEmail" placeholder="you@example.com" autocomplete="email">
+    </div>
+
+    <button class="intro-btn" id="introBtn">Start The Test</button>
+    <p class="intro-error" id="introError">Please fill out all fields to continue.</p>
+  </div>
+</section>
+
 <!-- ─── PROGRESS BAR ─── -->
-<div class="progress-bar-container" id="progressBar">
+<div class="progress-bar-container" id="progressBar" style="display:none;">
   <div class="progress-inner">
     <div class="progress-track">
       <div class="progress-fill" id="progressFill"></div>
@@ -642,7 +780,7 @@ footer {
 </div>
 
 <!-- ─── QUIZ ─── -->
-<form class="quiz-form" id="quizForm">
+<form class="quiz-form" id="quizForm" style="display:none;">
 
   <!-- PHYSICAL MASTERY -->
   <div class="section-num">01</div>
@@ -812,7 +950,7 @@ footer {
 <!-- ─── RESULTS ─── -->
 <section class="results-section" id="resultsSection">
   <div class="results-hero">
-    <h2>Your Nervous System<br><span>Readiness Score</span></h2>
+    <h2><span id="resultsName">Your</span> Nervous System<br><span>Readiness Score</span></h2>
     <div class="score-big" id="totalScore">0</div>
     <p class="score-label">out of 60</p>
     <div class="readiness-tag" id="readinessTag"></div>
@@ -875,6 +1013,44 @@ footer {
 
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
+// ─── INTRO FORM GATE ───
+document.getElementById('introBtn').addEventListener('click', function() {
+  const name = document.getElementById('userName');
+  const ig = document.getElementById('userIG');
+  const email = document.getElementById('userEmail');
+  let valid = true;
+
+  [name, ig, email].forEach(f => f.classList.remove('field-error'));
+
+  if (!name.value.trim()) { name.classList.add('field-error'); valid = false; }
+  if (!ig.value.trim()) { ig.classList.add('field-error'); valid = false; }
+  if (!email.value.trim() || !email.value.includes('@')) { email.classList.add('field-error'); valid = false; }
+
+  if (!valid) {
+    document.getElementById('introError').style.display = 'block';
+    return;
+  }
+
+  document.getElementById('introError').style.display = 'none';
+
+  // Store user info for results page
+  window.quizUser = { name: name.value.trim(), ig: ig.value.trim(), email: email.value.trim() };
+
+  // Hide intro, show quiz + scale legend
+  document.getElementById('introSection').style.display = 'none';
+  document.getElementById('scaleLegend').style.display = '';
+  document.getElementById('progressBar').style.display = '';
+  document.getElementById('quizForm').style.display = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Allow Enter key to submit intro form
+document.querySelectorAll('#introSection input').forEach(input => {
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('introBtn').click(); }
+  });
+});
+
 function openCalendly(e) {
   e.preventDefault();
   Calendly.initPopupWidget({
@@ -982,6 +1158,12 @@ document.getElementById('quizForm').addEventListener('submit', function(e) {
 
   // Scroll to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Personalize with first name
+  if (window.quizUser && window.quizUser.name) {
+    const firstName = window.quizUser.name.split(' ')[0];
+    document.getElementById('resultsName').textContent = firstName + "'s";
+  }
 
   // Populate scores
   document.getElementById('totalScore').textContent = total;
