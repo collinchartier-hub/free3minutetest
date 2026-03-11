@@ -1031,22 +1031,21 @@ document.getElementById('unlockBtn').addEventListener('click', function() {
   document.getElementById('infoError').style.display = 'none';
   window.quizUser = { name: name.value.trim(), email: email.value.trim() };
 
-  // Send data to Google Sheet
+  // Send data to Google Sheet via query params (works with Apps Script CORS)
   const total = window.quizScores.physical + window.quizScores.psychological + window.quizScores.biochemical;
   const level = getLevel(total, 60);
-  fetch('https://script.google.com/macros/s/AKfycby3qQiPN1knSU_SK_Y2jQfbtxdz8zT-TyPBYdFZq9YUJMMUeuiDyQ0i3x-t0HKzXOFS7w/exec', {
-    method: 'POST',
-    mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name: window.quizUser.name,
-      email: window.quizUser.email,
-      physical: window.quizScores.physical,
-      psychological: window.quizScores.psychological,
-      biochemical: window.quizScores.biochemical,
-      total: total,
-      level: level === 'low' ? 'Reactive' : level === 'mid' ? 'Under-Wired' : 'Near-Optimized'
-    })
+  const params = new URLSearchParams({
+    name: window.quizUser.name,
+    email: window.quizUser.email,
+    physical: window.quizScores.physical,
+    psychological: window.quizScores.psychological,
+    biochemical: window.quizScores.biochemical,
+    total: total,
+    level: level === 'low' ? 'Reactive' : level === 'mid' ? 'Under-Wired' : 'Near-Optimized'
+  });
+  fetch('https://script.google.com/macros/s/AKfycby3qQiPN1knSU_SK_Y2jQfbtxdz8zT-TyPBYdFZq9YUJMMUeuiDyQ0i3x-t0HKzXOFS7w/exec?' + params.toString(), {
+    method: 'GET',
+    mode: 'no-cors'
   }).catch(() => {});
 
   // Hide info gate, show results
