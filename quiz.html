@@ -1031,9 +1031,12 @@ document.getElementById('unlockBtn').addEventListener('click', function() {
   document.getElementById('infoError').style.display = 'none';
   window.quizUser = { name: name.value.trim(), email: email.value.trim() };
 
-  // Send data to Google Sheet via query params (works with Apps Script CORS)
+  // Send data + analysis to Google Sheet
   const total = window.quizScores.physical + window.quizScores.psychological + window.quizScores.biochemical;
   const level = getLevel(total, 60);
+  const pLevel = getLevel(window.quizScores.physical, 20);
+  const psLevel = getLevel(window.quizScores.psychological, 20);
+  const bLevel = getLevel(window.quizScores.biochemical, 20);
   const params = new URLSearchParams({
     name: window.quizUser.name,
     email: window.quizUser.email,
@@ -1041,7 +1044,11 @@ document.getElementById('unlockBtn').addEventListener('click', function() {
     psychological: window.quizScores.psychological,
     biochemical: window.quizScores.biochemical,
     total: total,
-    level: level === 'low' ? 'Reactive' : level === 'mid' ? 'Under-Wired' : 'Near-Optimized'
+    level: level === 'low' ? 'Reactive' : level === 'mid' ? 'Under-Wired' : 'Near-Optimized',
+    physicalAnalysis: analysis.physical[pLevel],
+    psychologicalAnalysis: analysis.psychological[psLevel],
+    biochemicalAnalysis: analysis.biochemical[bLevel],
+    overallAnalysis: analysis.overall[level]
   });
   fetch('https://script.google.com/macros/s/AKfycbyzbFWdaSupXCxUyxBH04FI9Y5ZbTDvF1A7C95VTp3pCZm0BYjGkJaD15Tw5g67Wjs_WA/exec?' + params.toString(), {
     method: 'GET',
